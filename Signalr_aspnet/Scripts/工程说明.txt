@@ -1,0 +1,5 @@
+﻿学习地址
+https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/tutorial-getting-started-with-signalr
+
+创建 asp.net web空项目
+安装install-package Microsoft.AspNet.SignalR

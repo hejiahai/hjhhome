@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MvcMovie.Models.ProductViewModel>
+@addTagHelper "MvcMovie.Models.PagerTagHelper,MvcMovie"
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>商 品 列 表</h2>
+
+<p>
+    <a asp-action="Create"><input type="button" value="新 建" class="btn btn-default" /></a>
+</p>
+<form asp-action="Index" method="get">
+    <p>
+        名称：<input type="text" name="searchString" value="@ViewData["SerachName"]" />
+        <input type="submit" value="搜索" class="btn btn-default" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                商品名称
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-SortOrder="@ViewData["DATE_KEY"]">生产日期</a>
+            </th>
+            <th>
+                价格
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-SortOrder="@ViewData["TYPE_KEY"]">商品类型</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">编辑</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">详情</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">删除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<pager pager-option="ViewBag.PagerOption as PagerInBase"></pager>
