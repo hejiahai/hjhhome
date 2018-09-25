@@ -17,7 +17,7 @@ namespace MvcMovie.Models
                 {
                     return;   // DB has been seeded
                 }
-
+                string ddd = "";
                 context.Movie.AddRange(
                      new Movie
                      {
